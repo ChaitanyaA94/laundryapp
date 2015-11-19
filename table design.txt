@@ -1,0 +1,68 @@
+<table id="view_tbl" border="0">
+        	<tr>
+				<?php if($row['photo']==""){?>
+					<td width="18%" rowspan="7" nowrap="nowrap" align="left">
+                    	<a href="vehicle_details.php?id=<?php echo $row['id'];?>" class="truck_details" title="view-details">
+                        <img src="images/no_img_truck.png" alt="Truck_img" title="Image not available" height="125px" width="130px"/>
+                        </a>
+                    </td>
+					<?php }else{?>
+					<td width="18%" rowspan="7" nowrap="nowrap" bgcolor="#FFF">
+                    	<a href="vehicle_details.php?id=<?php echo $row['id'];?>" class="truck_details" title="view-details">
+                        <img src="image/<?php echo $row['photo'];?>" alt="Truck_img" title="Truck_img" height="125px" width="130px"/>
+                        </a>
+                    </td>
+					<?php }?>
+            	
+            </tr>
+            <tr>
+               	<td nowrap="nowrap" style="text-align:left" width="20%">
+				<strong>Make And Model :</strong></td><td  width="62%" style="font-size:18px; color:#FF6600"><?php echo $make. " - ". $mod;?><br/></td>
+            </tr>
+            <tr>
+               	<td  style="text-align:left;"><strong>KM Run:</strong></td>
+					<?php if($row['km']=="" || $row['km']=="-" || $row['km']=="0"){  ?>
+				<td  style="text-align:left"><?php echo "Not Given";?><br /></td>
+				<?php
+				}else{?>
+				<td  style="text-align:left"><?php echo $row['km'];?><br /></td>
+ 			</tr>
+			<?php }?>
+            <tr>
+                <td  style="text-align:left"><strong>Body Type:</strong></td>
+				<?php if($row['bdty']=="" || $row['bdty']=="-" || $row['bdty']=="0"){ ?>
+				<td  style="text-align:left"><?php echo "Not Given";?><br /></td>
+				<?php
+				}else{?>
+				<td  style="text-align:left"><?php echo $row['bdty'];?><br /></td>
+			</tr>
+			<?php }?>
+            <tr>
+               <td  style="text-align:left"><strong>Regi Year:</strong></td>
+				<?php if($row['rgdt']=="" || $row['rgdt']=="-"){ ?>
+				<td  style="text-align:left"><?php echo "Not Given";?><br /></td>
+					<?php
+					}else{?>
+				<td  style="text-align:left"><?php echo $row['rgdt'];?><br /></td>
+			</tr>
+			<?php }?>
+            <tr>
+               <td  style="text-align:left"><strong>Description:</strong></td>
+				<?php if($row['desr']=="" || $row['desr']=="-"){?>
+					<td  style="text-align:left"><?php echo "Not Given";?><br /></td>
+				<?php }else{?>
+					<?php $des=$row['desr']; 
+					$h=strlen($des);
+					$arr2 = str_split($des, 70);
+					?>
+			
+			<td style="text-align:left"><?php echo $arr2[0]; ?><br/></td></tr>
+			</tr>
+			<?php }?>
+            <tr>
+                <td></td>
+                <td align="right">
+                <a href="vehicle_details.php?id=<?php echo $row['id'];?>" class="truck_details" title="view-details"><button type="button" class="btn btn-group-sm btn-primary"><span class="glyphicon glyphicon-list-alt"></span><strong> View Details</strong></button></a>
+                </td>
+            </tr>
+        </table>
